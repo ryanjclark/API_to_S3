@@ -6,8 +6,12 @@ authors = ["ryanjclark <ryanclark2021@u.northwestern.edu>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+requests = "^2.24.0"
 
 [tool.poetry.dev-dependencies]
+flake8 = "^3.8.3"
+pytest = "^5.4.3"
+dev-env = "^0.6.10"
 
 [build-system]
 requires = ["poetry>=0.12"]
