@@ -8,6 +8,8 @@ authors = ["ryanjclark <ryanclark2021@u.northwestern.edu>"]
 python = "^3.8"
 requests = "^2.24.0"
 pandas = "^1.0.5"
+boto3 = "^1.14.16"
+beautifulsoup4 = "^4.9.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.3"

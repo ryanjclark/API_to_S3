@@ -145,3 +145,6 @@ dev.env
 
 # Mac
 *.DS_Store
+
+# AWS
+.aws
