@@ -1,14 +1,14 @@
 import requests
 import json
 
-from .urls import TWITTER_STANDARD_SEARCH_URL
-from .urls import TWITTER_FRIENDSHIPS_LOOKUP_URL
-from .urls import TWITTER_USER_LOOKUP_URL
-from .urls import TWITTER_USER_SEARCH_URL
-from .urls import TWITTER_FOLLOWERS_IDS_URL
-from .urls import TWITTER_FRIENDS_IDS_URL
-from .urls import TWITTER_TRENDS_PLACE_URL
-from .twitter_auth.creds import BEARER_HEADER
+from src.utils.urls import TWITTER_STANDARD_SEARCH_URL
+from src.utils.urls import TWITTER_FRIENDSHIPS_LOOKUP_URL
+from src.utils.urls import TWITTER_USER_LOOKUP_URL
+from src.utils.urls import TWITTER_USER_SEARCH_URL
+from src.utils.urls import TWITTER_FOLLOWERS_IDS_URL
+from src.utils.urls import TWITTER_FRIENDS_IDS_URL
+from src.utils.urls import TWITTER_TRENDS_PLACE_URL
+from src.utils.twitter_auth.creds import BEARER_HEADER
 
 
 class ApiHandler:
@@ -74,6 +74,7 @@ class TwitterApiHandler(ApiHandler):
                             headers=BEARER_HEADER,
                             params=params)
 
+
     def get_friends(self, params: dict) -> dict:
         """Get friends (following) of a user.
         Expects params (dict):
@@ -94,6 +95,7 @@ class TwitterApiHandler(ApiHandler):
                             headers=BEARER_HEADER,
                             params=params)
 
+
     def get_friendships(self, params: dict) -> dict:
         """Get friendships of a user as connections which can be:
         following, following_requested, followed_by, none, blocking,
@@ -110,6 +112,7 @@ class TwitterApiHandler(ApiHandler):
                             headers=BEARER_HEADER,
                             params=params)
 
+
     def get_user_objects(self, params: dict) -> dict:
         """Fully hydrates User Objects from ids.
         Expects params (dict):
@@ -123,6 +126,7 @@ class TwitterApiHandler(ApiHandler):
         return self.get_req(url=TWITTER_USER_LOOKUP_URL,
                             headers=BEARER_HEADER,
                             params=params)
+
 
     def get_user_search(self, params: dict) -> dict:
         """Calls a search on Users. Uses OAuth 1 instead of OAuth 2.
@@ -142,6 +146,7 @@ class TwitterApiHandler(ApiHandler):
                             headers=BEARER_HEADER,
                             params=params)
 
+
     def get_trends_search(self, params: dict) -> dict:
         """Calls a search on trends by WOEID and returns top 50.
         Expects params (int):
@@ -153,8 +158,4 @@ class TwitterApiHandler(ApiHandler):
         return self.get_req(url=TWITTER_TRENDS_PLACE_URL,
                             headers=BEARER_HEADER,
                             params=params)
-
-
-if __name__ == "__main__":
-    pass
 
