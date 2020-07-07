@@ -21,12 +21,15 @@ BUCKET_NAME = os.environ.get('BUCKET_NAME')
 twitter = TwitterApiHandler(headers=BEARER_HEADER)
 params = {"q": "qanon", "count": 50}
 payload = twitter.get_tweet_search(params)
-
 flattened = flatten_json(payload)
-turn_json_to_pd_csv(flattened, twitter_output_filename)
 
+turn_json_to_pd_csv(flattened, twitter_output_filename)
 scrape_for_wiki_anchors(url=QANON_URL, output=wiki_output_filename)
 
-upload_to_s3(output=twitter_output_filename, bucket=BUCKET_NAME)
-upload_to_s3(output=wiki_output_filename, bucket=BUCKET_NAME)
+upload_to_s3(output=twitter_output_filename,
+             bucket=BUCKET_NAME,
+             folder="twitter")
+upload_to_s3(output=wiki_output_filename,
+             bucket=BUCKET_NAME,
+             folder="wikipedia")
 
