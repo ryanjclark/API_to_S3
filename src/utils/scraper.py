@@ -18,9 +18,6 @@ def scrape_for_wiki_anchors(url, output):
     for a in important_anchors:
         anchor_list.append(a.text)
 
-    with open(output, "w") as f:
-        for a in anchor_list:
-            f.write(a)
-            f.write(',')
+    series = pd.Series(anchor_list)
 
-    return True
+    return series 
