@@ -1,24 +1,31 @@
-def flatten_json(nested_json):
-    """
-        Flatten json object with nested keys into a single level.
-        Args:
-            nested_json: A nested json object.
-        Returns:
-            The flattened json object if successful, None otherwise.
-    """
-    out = {}
+from itertools import chain, starmap
 
-    def flatten(x, name=''):
-        if type(x) is dict:
-            for a in x:
-                flatten(x[a], name + a + '_')
-        elif type(x) is list:
+def flatten_json(dictionary):
+    """Flatten a nested json file"""
+
+    def unpack(parent_key, parent_value):
+        """Unpack one level of nesting in json file"""
+        # Unpack one level only!!!
+        if isinstance(parent_value, dict):
+            for key, value in parent_value.items():
+                temp1 = parent_key + '_' + key
+                yield temp1, value
+        elif isinstance(parent_value, list):
             i = 0
-            for a in x:
-                flatten(a, name + str(i) + '_')
+            for value in parent_value:
+                temp2 = parent_key + '_'+str(i)
                 i += 1
+                yield temp2, value
         else:
-            out[name[:-1]] = x
+            yield parent_key, parent_value
 
-    flatten(nested_json)
-    return out
+    while True:
+        # Keep unpacking the json file until all values are atomic elements (not dictionary or list)
+        dictionary = dict(chain.from_iterable(starmap(unpack, dictionary.items())))
+        # Terminate condition: not any value in the json file is dictionary or list
+        if not any(isinstance(value, dict) for value in dictionary.values()) and \
+           not any(isinstance(value, list) for value in dictionary.values()):
+            break
+
+    return dictionary
+
