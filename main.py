@@ -23,8 +23,9 @@ twitter = TwitterApiHandler(headers=BEARER_HEADER)
 params = {"q": "qanon", "count": 50}
 payload = twitter.get_tweet_search(params)
 
-flattened_twitter = flatten_json(payload)
-turn_json_to_pd_csv(flattened_twitter, twitter_output_filename)
+flattened_twitter = pd.json_normalize(data=payload["statuses"])
+truncated_twitter = flattened_twitter[['created_at', 'id', 'text', 'retweet_count', 'user.description', 'user.followers_count']]
+truncated_twitter.to_csv(twitter_output_filename, header=False)
 
 flattened_wiki = scrape_for_wiki_anchors(url=QANON_URL, output=wiki_output_filename)
 turn_list_to_pd_csv(flattened_wiki, wiki_output_filename)

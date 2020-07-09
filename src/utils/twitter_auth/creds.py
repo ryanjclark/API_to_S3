@@ -2,7 +2,7 @@ import os
 import requests
 import base64
 
-from src.utils.urls import BASE_TWITTER_URL
+# TODO: Import URL
 
 BASE_TWITTER_URL = "https://api.twitter.com/"
 AUTH_URL = "{}oauth2/token".format(BASE_TWITTER_URL)
@@ -22,4 +22,3 @@ auth_data = {"grant_type": "client_credentials"}
 auth_resp = requests.post(AUTH_URL, headers=auth_headers, data=auth_data)
 access_token = auth_resp.json()["access_token"]
 BEARER_HEADER = {"Authorization": "Bearer {}".format(access_token)}
-

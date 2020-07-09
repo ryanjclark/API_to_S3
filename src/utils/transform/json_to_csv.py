@@ -5,4 +5,3 @@ def turn_json_to_pd_csv(flattened_json, output_filename):
     df.rename(columns={"0": "value"}, inplace=True)
     output = df.to_csv(output_filename)
     return output
-
