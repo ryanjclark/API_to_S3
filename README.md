@@ -15,5 +15,5 @@ poetry shell
 poetry install
 ```
 ```
-sh. run.sh
+python main.py
 ```
