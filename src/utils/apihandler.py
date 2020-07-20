@@ -10,6 +10,7 @@ from src.utils.urls import TWITTER_FRIENDS_IDS_URL
 from src.utils.urls import TWITTER_TRENDS_PLACE_URL
 from src.utils.twitter_auth.creds import BEARER_HEADER
 
+TWITTER_BEARER = {"authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAOVjGAEAAAAAsk6MRl49tmF61Pi9O%2F%2BFFd%2FY5J0%3DYkEWIZiii6iIbM425JjkVEGgn4X6AxwL1ZAYHTGBRrNlMr8Do3"}
 
 class ApiHandler:
     def get_req(url: str, headers: dict, params: dict) -> dict:
