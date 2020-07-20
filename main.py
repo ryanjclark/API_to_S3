@@ -36,4 +36,3 @@ upload_to_s3(output=twitter_output_filename,
 upload_to_s3(output=wiki_output_filename,
              bucket=BUCKET_NAME,
              folder="wikipedia")
-
