@@ -243,6 +243,24 @@ version = "0.15.2"
 
 [[package]]
 category = "main"
+description = "Python client for Elasticsearch"
+name = "elasticsearch"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4"
+version = "7.8.0"
+
+[package.dependencies]
+certifi = "*"
+urllib3 = ">=1.21.1"
+
+[package.extras]
+async = ["aiohttp (>=3,<4)", "yarl"]
+develop = ["requests (>=2.0.0,<3.0.0)", "coverage", "mock", "pyyaml", "pytest", "pytest-cov", "sphinx (<1.7)", "sphinx-rtd-theme", "black", "jinja2"]
+docs = ["sphinx (<1.7)", "sphinx-rtd-theme"]
+requests = ["requests (>=2.4.0,<3.0.0)"]
+
+[[package]]
+category = "main"
 description = "Discover and load entry points from installed packages."
 name = "entrypoints"
 optional = false
@@ -936,6 +954,17 @@ socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7)", "win-inet-pton"]
 
 [[package]]
 category = "main"
+description = "AWS4 authentication for Requests"
+name = "requests-aws4auth"
+optional = false
+python-versions = "*"
+version = "1.0"
+
+[package.dependencies]
+requests = "*"
+
+[[package]]
+category = "main"
 description = "An Amazon S3 Transfer Manager"
 name = "s3transfer"
 optional = false
@@ -1094,7 +1123,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "1.2.0"
 
 [metadata]
-content-hash = "bdf181a51129b05b6730875ba1ce43226d4f885139e1420f60d65e27bc729330"
+content-hash = "1012c870d1da79b37d3cc48b117964cac26f074daca53f033ca28c62354e11f9"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1183,6 +1212,10 @@ docutils = [
     {file = "docutils-0.15.2-py2-none-any.whl", hash = "sha256:9e4d7ecfc600058e07ba661411a2b7de2fd0fafa17d1a7f7361cd47b1175c827"},
     {file = "docutils-0.15.2-py3-none-any.whl", hash = "sha256:6c4f696463b79f1fb8ba0c594b63840ebd41f059e92b31957c46b74a4599b6d0"},
     {file = "docutils-0.15.2.tar.gz", hash = "sha256:a2aeea129088da402665e92e0b25b04b073c04b2dce4ab65caaa38b7ce2e1a99"},
+]
+elasticsearch = [
+    {file = "elasticsearch-7.8.0-py2.py3-none-any.whl", hash = "sha256:6fb566dd23b91b5871ce12212888674b4cf33374e92b71b1080916c931e44dcb"},
+    {file = "elasticsearch-7.8.0.tar.gz", hash = "sha256:e637d8cf4e27e279b5ff8ca8edc0c086f4b5df4bf2b48e2f950b7833aca3a792"},
 ]
 entrypoints = [
     {file = "entrypoints-0.3-py2.py3-none-any.whl", hash = "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19"},
@@ -1517,6 +1550,10 @@ qtpy = [
 requests = [
     {file = "requests-2.24.0-py2.py3-none-any.whl", hash = "sha256:fe75cc94a9443b9246fc7049224f75604b113c36acb93f87b80ed42c44cbb898"},
     {file = "requests-2.24.0.tar.gz", hash = "sha256:b3559a131db72c33ee969480840fff4bb6dd111de7dd27c8ee1f820f4f00231b"},
+]
+requests-aws4auth = [
+    {file = "requests-aws4auth-1.0.tar.gz", hash = "sha256:2950f6ff686b5a452a269076d990e4821d959b61cfac319c3d3c6daaa5db55ce"},
+    {file = "requests_aws4auth-1.0-py2.py3-none-any.whl", hash = "sha256:73f10dce17f11c93a90e06c8d3c7a28995c1f90a6dbe85a5637033669c3e097d"},
 ]
 s3transfer = [
     {file = "s3transfer-0.3.3-py2.py3-none-any.whl", hash = "sha256:2482b4259524933a022d59da830f51bd746db62f047d6eb213f2f8855dcb8a13"},
