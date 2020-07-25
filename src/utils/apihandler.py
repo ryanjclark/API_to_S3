@@ -8,9 +8,13 @@ from src.utils.urls import TWITTER_USER_SEARCH_URL
 from src.utils.urls import TWITTER_FOLLOWERS_IDS_URL
 from src.utils.urls import TWITTER_FRIENDS_IDS_URL
 from src.utils.urls import TWITTER_TRENDS_PLACE_URL
+from src.utils.urls import TWITTER_USER_TIMELINE_URL
 from src.utils.twitter_auth.creds import BEARER_HEADER
 
-TWITTER_BEARER = {"authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAOVjGAEAAAAAsk6MRl49tmF61Pi9O%2F%2BFFd%2FY5J0%3DYkEWIZiii6iIbM425JjkVEGgn4X6AxwL1ZAYHTGBRrNlMr8Do3"}
+TWITTER_BEARER = {
+    "authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAOVjGAEAAAAAsk6MRl49tmF61Pi9O%2F%2BFFd%2FY5J0%3DYkEWIZiii6iIbM425JjkVEGgn4X6AxwL1ZAYHTGBRrNlMr8Do3"
+}
+
 
 class ApiHandler:
     def get_req(url: str, headers: dict, params: dict) -> dict:
@@ -51,9 +55,9 @@ class TwitterApiHandler(ApiHandler):
 
         Returns (dict):
         Tweet Objects and search metadata."""
-        return self.get_req(url=TWITTER_STANDARD_SEARCH_URL,
-                            headers=BEARER_HEADER,
-                            params=params)
+        return self.get_req(
+            url=TWITTER_STANDARD_SEARCH_URL, headers=BEARER_HEADER, params=params
+        )
 
     def get_followers(self, params: dict) -> dict:
         """Get followers of a user.
@@ -71,10 +75,9 @@ class TwitterApiHandler(ApiHandler):
 
         Returns (dict):
         {ids, next_cursor, previous cursor}."""
-        return self.get_req(url=TWITTER_FOLLOWERS_IDS_URL,
-                            headers=BEARER_HEADER,
-                            params=params)
-
+        return self.get_req(
+            url=TWITTER_FOLLOWERS_IDS_URL, headers=BEARER_HEADER, params=params
+        )
 
     def get_friends(self, params: dict) -> dict:
         """Get friends (following) of a user.
@@ -92,10 +95,9 @@ class TwitterApiHandler(ApiHandler):
 
         Returns (dict):
         {ids, next_cursor, previous cursor}."""
-        return self.get_req(url=TWITTER_FRIENDS_IDS_URL,
-                            headers=BEARER_HEADER,
-                            params=params)
-
+        return self.get_req(
+            url=TWITTER_FRIENDS_IDS_URL, headers=BEARER_HEADER, params=params
+        )
 
     def get_friendships(self, params: dict) -> dict:
         """Get friendships of a user as connections which can be:
@@ -109,10 +111,9 @@ class TwitterApiHandler(ApiHandler):
 
         Returns (dict):
         Ids and their relationship to given User."""
-        return self.get_req(url=TWITTER_FRIENDSHIPS_LOOKUP_URL,
-                            headers=BEARER_HEADER,
-                            params=params)
-
+        return self.get_req(
+            url=TWITTER_FRIENDSHIPS_LOOKUP_URL, headers=BEARER_HEADER, params=params
+        )
 
     def get_user_objects(self, params: dict) -> dict:
         """Fully hydrates User Objects from ids.
@@ -124,10 +125,9 @@ class TwitterApiHandler(ApiHandler):
 
         Returns (dict):
         User Objects."""
-        return self.get_req(url=TWITTER_USER_LOOKUP_URL,
-                            headers=BEARER_HEADER,
-                            params=params)
-
+        return self.get_req(
+            url=TWITTER_USER_LOOKUP_URL, headers=BEARER_HEADER, params=params
+        )
 
     def get_user_search(self, params: dict) -> dict:
         """Calls a search on Users. Uses OAuth 1 instead of OAuth 2.
@@ -143,10 +143,9 @@ class TwitterApiHandler(ApiHandler):
 
         Returns (dict):
         User Objects."""
-        return self.get_req(url=TWITTER_USER_SEARCH_URL,
-                            headers=BEARER_HEADER,
-                            params=params)
-
+        return self.get_req(
+            url=TWITTER_USER_SEARCH_URL, headers=BEARER_HEADER, params=params
+        )
 
     def get_trends_search(self, params: dict) -> dict:
         """Calls a search on trends by WOEID and returns top 50.
@@ -156,7 +155,11 @@ class TwitterApiHandler(ApiHandler):
 
         Returns (dict):
         {name, url, promoted_content, tweet_volume}."""
-        return self.get_req(url=TWITTER_TRENDS_PLACE_URL,
-                            headers=BEARER_HEADER,
-                            params=params)
+        return self.get_req(
+            url=TWITTER_TRENDS_PLACE_URL, headers=BEARER_HEADER, params=params
+        )
 
+    def get_user_timeline(self, params: dict) -> dict:
+        return self.get_req(
+            url=TWITTER_USER_TIMELINE_URL, headers=BEARER_HEADER, params=params
+        )

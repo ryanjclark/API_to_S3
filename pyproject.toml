@@ -14,6 +14,10 @@ jupyter = "^1.0.0"
 ipykernel = "^5.3.3"
 elasticsearch = "^7.8.0"
 requests-aws4auth = "^1.0"
+mypy = "^0.782"
+bandit = "^1.6.2"
+flake8 = "^3.8.3"
+black = "^19.10b0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.3"
